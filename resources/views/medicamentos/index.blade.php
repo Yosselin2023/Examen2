@@ -47,7 +47,7 @@
                     <tr>
                         <td>
                             @if($item->imagen)
-                                <img class="small-img" src="{{ asset('storage/'.$item->imagen) }}">
+                                <img class="small-img" src="{{ asset('storage/'.$item->imagen) }}" alt="Fotografía de {{ $item->nombre }}">
                             @else
                                 <span class="text-muted">Sin foto</span>
                             @endif

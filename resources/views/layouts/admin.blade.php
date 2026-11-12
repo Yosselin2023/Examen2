@@ -22,7 +22,8 @@
         .sb-sidenav-dark .sb-sidenav-menu .nav-link {
             color: #eaf2f8;
         }
-        .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+        .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover,
+        .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
             background: #24577f;
             color: white;
         }
@@ -61,8 +62,8 @@
 
     
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background: #123b60;">
-        <a class="navbar-brand ps-3 df-brand" href="{{ route('dashboard') }}">
-            DISFARMA <span>HONDURAS</span>
+        <a class="navbar-brand ps-3" href="{{ route('dashboard') }}" aria-label="DISFARMA Honduras - Dashboard">
+            <img src="{{ asset('img/disfarma-logo.svg') }}" alt="DISFARMA Honduras" style="width: 174px; height: auto;">
         </a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4" id="sidebarToggle">
             <i class="bi bi-list text-white"></i>
@@ -92,21 +93,21 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Principal</div>
-                        <a class="nav-link" href="{{ route('dashboard') }}">
+                        <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-speedometer2"></i></div>
                             Dashboard
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Gestión</div>
-                        <a class="nav-link" href="{{ route('medicamentos.index') }}">
+                        <a class="nav-link {{ request()->routeIs('medicamentos.*') ? 'active' : '' }}" href="{{ route('medicamentos.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-capsule"></i></div>
                             Medicamentos
                         </a>
-                        <a class="nav-link" href="{{ route('proveedores.index') }}">
+                        <a class="nav-link {{ request()->routeIs('proveedores.*') ? 'active' : '' }}" href="{{ route('proveedores.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-truck"></i></div>
                             Proveedores
                         </a>
-                        <a class="nav-link" href="{{ route('empleados.index') }}">
+                        <a class="nav-link {{ request()->routeIs('empleados.*') ? 'active' : '' }}" href="{{ route('empleados.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-people"></i></div>
                             Empleados
                         </a>
