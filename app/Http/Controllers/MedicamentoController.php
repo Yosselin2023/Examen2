@@ -34,8 +34,10 @@ class MedicamentoController extends Controller
     public function index(Request $request)
     {
         $medicamentos = Medicamento::when($request->buscar, function ($q, $v) {
-            $q->where('nombre', 'like', "%$v%")
-              ->orWhere('codigo', 'like', "%$v%");
+            $q->where(function ($filtro) use ($v) {
+                $filtro->where('nombre', 'like', "%$v%")
+                       ->orWhere('codigo', 'like', "%$v%");
+            });
         })
         ->latest()
         ->paginate(10)

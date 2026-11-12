@@ -21,7 +21,7 @@ class EmpleadoController extends Controller
             'correo' => 'nullable|email|max:255',
             'cargo' => 'required|in:Regente Farmacéutico,Asistente de Farmacia,Jefe de Bodega,Despachador,Cajero',
             'salario' => 'required|numeric|gt:0',
-            'fecha_ingreso' => 'required|date',
+            'fecha_ingreso' => 'required|date|before_or_equal:today',
             'estado' => 'required|in:Activo,Inactivo'
         ];
     }
@@ -29,9 +29,11 @@ class EmpleadoController extends Controller
     public function index(Request $request)
     {
         $empleados = Empleado::when($request->buscar, function ($q, $v) {
-            $q->where('nombre', 'like', "%$v%")
-              ->orWhere('apellido', 'like', "%$v%")
-              ->orWhere('identidad', 'like', "%$v%");
+            $q->where(function ($filtro) use ($v) {
+                $filtro->where('nombre', 'like', "%$v%")
+                       ->orWhere('apellido', 'like', "%$v%")
+                       ->orWhere('identidad', 'like', "%$v%");
+            });
         })
         ->latest()
         ->paginate(10)

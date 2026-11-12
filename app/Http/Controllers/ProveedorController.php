@@ -32,8 +32,10 @@ class ProveedorController extends Controller
     public function index(Request $request)
     {
         $proveedores = Proveedor::when($request->buscar, function ($q, $v) {
-            $q->where('empresa', 'like', "%$v%")
-              ->orWhere('rtn', 'like', "%$v%");
+            $q->where(function ($filtro) use ($v) {
+                $filtro->where('empresa', 'like', "%$v%")
+                       ->orWhere('rtn', 'like', "%$v%");
+            });
         })
         ->latest()
         ->paginate(10)
