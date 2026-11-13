@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('medicamentos', MedicamentoController::class)->except(['show']);
-    Route::resource('proveedores', ProveedorController::class)->except(['show']);
+    Route::resource('proveedores', ProveedorController::class)
+        ->except(['show'])
+        ->parameters(['proveedores' => 'proveedor']);
     Route::resource('empleados', EmpleadoController::class)->except(['show']);
 });

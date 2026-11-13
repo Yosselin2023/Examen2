@@ -44,7 +44,7 @@
                         
                         <!-- Encabezado de la tarjeta -->
                         <div class="text-center mb-4">
-                            <div class="brand fs-2">DISFARMA <span>HONDURAS</span></div>
+                            <img src="{{ asset('img/disfarma-logo.svg') }}" alt="DISFARMA Honduras" class="img-fluid mb-3" style="max-width: 290px;">
                             <p class="text-muted mb-0">Sistema de Gestión Interna</p>
                         </div>
 
@@ -79,7 +79,7 @@
 
                            
                             <div class="form-check mb-4">
-                                <input class="form-check-input" id="remember" type="checkbox" name="remember" value="1">
+                                <input class="form-check-input" id="remember" type="checkbox" name="remember" value="1" @checked(old('remember'))>
                                 <label class="form-check-label" for="remember">Recordar mi sesión</label>
                             </div>
 
