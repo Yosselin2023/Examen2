@@ -44,7 +44,7 @@
                         
                         <!-- Encabezado de la tarjeta -->
                         <div class="text-center mb-4">
-                            <img src="{{ asset('img/disfarma-logo.svg') }}" alt="DISFARMA Honduras" class="img-fluid mb-3" style="max-width: 290px;">
+                            <img src="{{ asset('img/farmacia.jpg') }}" alt="DISFARMA Honduras" class="img-fluid mb-3" style="max-width: 290px;">
                             <p class="text-muted mb-0">Sistema de Gestión Interna</p>
                         </div>
 
