@@ -15,19 +15,12 @@
 
 <div class="card mb-4">
     <div class="card-header">
-        <i class="bi bi-table me-1"></i> Listado de Empleados
-    </div>
+        <i class="bi bi-table me-1"></i> Listado de Empleados</div>
     <div class="card-body">
-        <!-- Buscador -->
+     
         <form method="GET" class="row g-2 mb-3">
             <div class="col-md-5">
-                <input 
-                    type="text" 
-                    name="buscar" 
-                    value="{{ request('buscar') }}" 
-                    class="form-control" 
-                    placeholder="Buscar por nombre, código o identificación"
-                >
+                <input type="text" name="buscar" value="{{ request('buscar') }}" class="form-control" placeholder="Buscar por nombre, código o identificación">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-outline-primary">
